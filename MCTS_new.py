@@ -138,6 +138,3 @@ class MCTS:
                 return new_name
         new_name = old_name + step
         return new_name
-
-    def save_tree(self, file_name):
-        utils.write_file(self.node_record, file_name)

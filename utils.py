@@ -1,6 +1,12 @@
 import numpy as np
 import pickle
 
+import copy
+import random
+
+num2char = {0: "a", 1: "b", 2: "c", 3: "d", 4: "e", 5: "f", 6: "g", 7: "h", 8: "i", 9: "j", 10: "k", 11: "l", 12: "m",
+            13: "n", 14: "o", 15: "p", 16: "q", 17: "r", 18: "s", 19: "t", 20: "u"}
+
 def step_child_remove(board_pool, child_pool):
     i = 0
     while i<len(board_pool) and len(child_pool) != 0:
@@ -26,3 +32,40 @@ def read_file(file_name):
     object = pickle.load(filereader)
     filereader.close()
     return object
+
+def valid_move(state):
+    return list(np.where(state!=0))
+
+def generate_new_state(old_name, step, current_player):
+    if current_player == 1:
+        step = "B" + num2char[step[0]] + num2char[step[1]]
+    else:
+        step = "W" + num2char[step[0]] + num2char[step[1]]
+    for i in range(0, len(old_name), 3):
+        if old_name[i+1]>step[1] or (old_name[i+1]==step[1] and old_name[i+2]>step[2]):
+            new_name = old_name[:i] + step + old_name[i:]
+            return new_name
+    new_name = old_name + step
+    return new_name
+
+class random_stack:
+    def __init__(self, length=1000, clear_size=100):
+        self.data = []
+        self.length = length
+        self.clear_size = clear_size
+
+    def isEmpty(self):
+        return len(self.data) == 0
+
+    def push(self, item):
+        self.data.append(item)
+        if len(self.data)>= (self.length+self.clear_size):
+            self.data = self.data[self.clear_size:]
+
+    def seq(self):
+        return copy.deepcopy(self.data)
+
+    def random_seq(self):
+        tmp = copy.deepcopy(self.data)
+        random.shuffle(tmp)
+        return tmp

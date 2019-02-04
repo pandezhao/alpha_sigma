@@ -8,11 +8,8 @@ class main_process:
         self.valid_backup = []
         self.current_player = 1
         self.passed = 0
-        if not AI:
+        if AI:
             self.AI = "random"
-        else:
-            self.AI = AI
-            self.model = torch.load(AI)
 
         self.games_counter = 0
         self.games_black_win_counter = 0
@@ -31,16 +28,16 @@ class main_process:
         self.current_player = 1
         self.passed = 0
 
-        self.board_record = []
-        self.place_record = []
-
     def clear_tmp(self):
         self.tmp_black_win = 0
         self.tmp_white_win = 0
         self.tmp_heqi = 0
 
-    def load_AI(self):
+    def vs_AI(self):
         pass
+
+    def which_player(self):
+        return self.current_player
 
     def step(self, place):
         self.passed += 1
@@ -57,18 +54,15 @@ class main_process:
                 else:
                     self.games_white_win_counter += 1
                     self.tmp_white_win += 1
-                tmp = np.copy(self.board[4:self.board_size+4, 4:self.board_size+4])
-                self.board_record.append(tmp)
+
                 return False, self.board[4:self.board_size+4, 4:self.board_size+4]
             elif self.passed == self.board_size * self.board_size:
                 self.games_counter += 1
                 self.no_win_games_counter += 1
                 self.tmp_heqi += 1
-                tmp = np.copy(self.board[4:self.board_size+4, 4:self.board_size+4])
-                self.board_record.append(tmp)
+
                 return None, self.board[4:self.board_size+4, 4:self.board_size+4]
-            tmp = np.copy(self.board[4:self.board_size+4, 4:self.board_size+4])
-            self.board_record.append(tmp)
+
             return True, self.board[4:self.board_size+4, 4:self.board_size+4]
         else:
             raise ValueError("here already has a stone, you can't please stone on it")

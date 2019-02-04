@@ -3,7 +3,7 @@ from five_stone_game import main_process
 import utils
 
  #child node的action我似乎是写错了，每一个node的child之内对应的每一个child node之中都应该有一个action
-def main(board_size=13,tree_file=None):
+def main(board_size=11,tree_file=None):
     if tree_file:
         tree = utils.read_file(tree_file)
     else:
