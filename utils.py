@@ -7,6 +7,9 @@ import random
 num2char = {0: "a", 1: "b", 2: "c", 3: "d", 4: "e", 5: "f", 6: "g", 7: "h", 8: "i", 9: "j", 10: "k", 11: "l", 12: "m",
             13: "n", 14: "o", 15: "p", 16: "q", 17: "r", 18: "s", 19: "t", 20: "u"}
 
+char2num = {"a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i": 8, "j": 9, "k": 10, "l": 11, "m": 12,
+            "n": 13, "o": 14, "p": 15, "q": 16, "r": 17, "s": 18, "t": 19, "u": 20}
+
 def step_child_remove(board_pool, child_pool):
     i = 0
     while i<len(board_pool) and len(child_pool) != 0:
@@ -32,6 +35,12 @@ def read_file(file_name):
     object = pickle.load(filereader)
     filereader.close()
     return object
+
+def move_to_str(action):
+    return num2char[action[0]] + num2char[action[1]]
+
+def str_to_move(str):
+    return np.array([char2num[str[0]], char2num[str[1]]])
 
 def valid_move(state):
     return list(np.where(state!=0))
