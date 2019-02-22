@@ -51,8 +51,8 @@ class main_process:
             raise ValueError("The input board state is not a standard five stone game board, the number of black stone"
                              " and white stone is incorrect")
 
-    def step(self, place):
-        self.passed += 1
+    def step(self, place):  # 这里还需要增加下board state的厚度，因为原版的输入到神经网络里免得board state可并不是只有一个2D matrix。
+        self.passed += 1    # 所以我们需要增加下厚度。
         if not self.board[place[0]+4, place[1]+4]:
             self.board[place[0]+4, place[1]+4] = self.current_player
             self.current_player = -self.current_player

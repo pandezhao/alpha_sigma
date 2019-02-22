@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e778044-0e4d-4dd5-acbf-fe4f92cd2a4d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/five_stone_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/five_stone_game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new_MCTS.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_MCTS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,8 +22,8 @@
             <file leaf-file-name="five_stone_game.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/five_stone_game.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="17">
-                    <caret line="4" column="49" lean-forward="true" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+                  <state relative-caret-position="918">
+                    <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
                     <folding>
                       <element signature="e#0#12#0" expanded="true" />
                     </folding>
@@ -32,8 +34,8 @@
             <file leaf-file-name="utils.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/utils.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="289">
-                    <caret line="26" selection-start-line="26" selection-end-line="26" />
+                  <state relative-caret-position="544">
+                    <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
                     <folding>
                       <element signature="e#0#18#0" expanded="true" />
                     </folding>
@@ -63,11 +65,11 @@
       <file leaf-file-name="new_MCTS.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/new_MCTS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="89" column="43" selection-start-line="89" selection-start-column="43" selection-end-line="89" selection-end-column="43" />
+            <state relative-caret-position="4">
+              <caret line="91" column="20" lean-forward="true" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <marker date="1550350678815" expanded="true" signature="2606:2613" ph="..." />
+                <marker date="1550811319976" expanded="true" signature="3455:3462" ph="..." />
               </folding>
             </state>
           </provider>
@@ -97,8 +99,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/five_stone_game.py" />
+        <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/new_MCTS.py" />
       </list>
     </option>
@@ -247,7 +249,7 @@
           <caret line="59" column="37" lean-forward="true" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1550350678815" expanded="true" signature="2606:2613" ph="..." />
+            <marker date="1550811319976" expanded="true" signature="3455:3462" ph="..." />
           </folding>
         </state>
       </provider>
@@ -273,8 +275,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/five_stone_game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="4" column="49" lean-forward="true" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+        <state relative-caret-position="918">
+          <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -283,8 +285,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="544">
+          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -293,11 +295,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/new_MCTS.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="89" column="43" selection-start-line="89" selection-start-column="43" selection-end-line="89" selection-end-column="43" />
+        <state relative-caret-position="4">
+          <caret line="91" column="20" lean-forward="true" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1550350678815" expanded="true" signature="2606:2613" ph="..." />
+            <marker date="1550811319976" expanded="true" signature="3455:3462" ph="..." />
           </folding>
         </state>
       </provider>

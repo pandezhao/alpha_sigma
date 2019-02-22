@@ -1,5 +1,6 @@
 import numpy as np
 import random
+import sys
 import utils
 from five_stone_game import main_process as five_stone_game
 
@@ -13,14 +14,19 @@ class edge:
         self.parent_node = parent_node
         self.priorP = priorP
         self.MCTS_ptr = MCTS_pointer
-        self.child_node = self.search_and_get_child_node()
+        self.child_node = None # self.search_and_get_child_node()
 
     def backup(self, v):
         self.parent_node.backup(-v)
 
     def get_child(self):
-        self.counter += 1
-        return self.child_node
+        if self.child_node is None:
+            self.counter += 1
+            self.child_node = self.search_and_get_child_node()
+            return self.child_node, True
+        else:
+            self.counter += 1
+            return self.child_node, False
 
     def search_and_get_child_node(self):
         new_state_name = utils.generate_new_state(self.parent_node.get_state, self.action, self.parent_node.node_player)
@@ -28,7 +34,7 @@ class edge:
         if search_result:
             return search_result
         else:
-            return node(new_state_name, self, 1 - self.parent_node.node_player)
+            return node(new_state_name, self, 1 - self.parent_node.node_player, self.MCTS_ptr)
 
 class node:
     def __init__(self, state, parent, player, MCTS_pointer):
@@ -61,9 +67,20 @@ class node:
             self.parent.backup(v)
 
     def get_distribution(self): ## used to get the step distribution of current
-
         for key in self.child.keys():
+            self.MCTS_pointer.distribution_calculater.push(key, self.child[key])
+        return self.MCTS_pointer.distribution_calculater.get()
 
+
+    def UCB_sim(self):
+        UCB_max = -sys.maxsize
+        UCB_max_key = None
+        for key in self.child.keys():
+            if self.child[key].UCB_value > UCB_max:
+                UCB_max_key = key
+                UCB_max = self.child[key].UCB_value
+        this_node, expand = self.child[UCB_max_key].get_child()
+        return this_node, expand, self.child[UCB_max_key].action
 
 
 class MCTS:
@@ -77,21 +94,32 @@ class MCTS:
         self.game_process = five_stone_game(board_size=board_size)
         self.simulate_game = five_stone_game(board_size=board_size)
 
+        self.distribution_calculater = utils.distribution_calculater(self.board_size)
+
     def search_node(self, node_name):
 
 
     def simulation(self):
         for _ in range(self.s_per_step):
-            expand = False
+            expand, game_continue = False, True
             this_node = self.current_node
             self.simulate_game.simulate_reset(self.game_process.current_board_state())
             state = self.simulate_game.current_board_state()
-            while not expand:
+            while game_continue and not expand:
                 if this_node.eval_or_not():
-                    state_prob, state_v = self.NN.eval(state)
+                    state_prob, _ = self.NN.eval(state)
                     valid_move = utils.valid_move(state)
                     for move in valid_move:
                         this_node.add_child(action=move, priorP=state_prob[move[0]*self.board_size + move[1]])
+
+                this_node, expand, action = this_node.UCB_sim()
+                game_continue, state = self.simulate_game.step(action)
+
+            if not game_continue:
+                this_node.backup(1)
+            elif expand:
+                _, state_v = self.NN.eval(state)
+                this_node.backup(state_v)
 
     def game(self):
 
