@@ -48,29 +48,17 @@ class BasicBlock(nn.Module):
 
 class ResNet(nn.Module):
 
-    def __init__(self, block, layers, input_layer=3, zero_init_residual=False):
+    def __init__(self, block, layers, input_layer=3):
         super(ResNet, self).__init__()
-        self.inplanes = 64
-        self.conv1 = nn.Conv2d(input_layer, 64, kernel_size=3, stride=1, padding=3,
+        self.inplanes = 8
+        self.conv1 = nn.Conv2d(input_layer, 8, kernel_size=3, stride=1, padding=3,
                                bias=False)
-        self.bn1 = nn.BatchNorm2d(64)
+        self.bn1 = nn.BatchNorm2d(8)
         self.relu = nn.ReLU(inplace=True)
-        self.layer1 = self._make_layer(block, 64, layers[0])
-        self.layer2 = self._make_layer(block, 128, layers[1], stride=2)
-        self.layer3 = self._make_layer(block, 256, layers[2], stride=2)
+        self.layer1 = self._make_layer(block, 8, layers[0])
+        self.layer2 = self._make_layer(block, 16, layers[1], stride=2)
+        self.layer3 = self._make_layer(block, 32, layers[2], stride=2)
         # self.layer4 = self._make_layer(block, 512, layers[3], stride=2)
-
-        for m in self.modules():
-            if isinstance(m, nn.Conv2d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
-            elif isinstance(m, nn.BatchNorm2d):
-                nn.init.constant_(m.weight, 1)
-                nn.init.constant_(m.bias, 0)
-
-        if zero_init_residual:
-            for m in self.modules():
-                if isinstance(m, BasicBlock):
-                    nn.init.constant_(m.bn2.weight, 0)
 
     def _make_layer(self, block, planes, blocks, stride=1):
         downsample = None
@@ -105,65 +93,73 @@ def resnet18(input_layers):
 
 
 class Model(nn.Module):
-    def __init__(self, input_layer):
+    def __init__(self, input_layer, board_size):
         super(Model, self).__init__()
         self.model = resnet18(input_layers=input_layer)
         self.tanh = nn.Tanh()
         self.relu = nn.ReLU()
         # value head
-        self.value_conv1 = nn.Conv2d(kernel_size=1, in_channels=256, out_channels=16)
+        self.value_conv1 = nn.Conv2d(kernel_size=1, in_channels=32, out_channels=16)
         self.value_bn1 = nn.BatchNorm2d(16)
-        self.value_fc1 = nn.Linear(in_features=16 * 4, out_features=256)
+        self.value_fc1 = nn.Linear(in_features=16 * 4 * 4, out_features=256)
         self.value_fc2 = nn.Linear(in_features=256, out_features=1)
         # policy head
-        self.policy_conv1 = nn.Conv2d(kernel_size=1, in_channels=256, out_channels=16)
+        self.policy_conv1 = nn.Conv2d(kernel_size=1, in_channels=32, out_channels=16)
         self.policy_bn1 = nn.BatchNorm2d(16)
-        self.policy_fc1 = nn.Linear(in_features=16 * 4, out_features=input_layer*input_layer)
+        self.policy_fc1 = nn.Linear(in_features=16 * 4 * 4, out_features=board_size * board_size)
 
     def forward(self, state):
         s = self.model(state)
 
         # value head part
         v = self.value_conv1(s)
-        v = self.relu(self.value_bn1(v))
+        v = self.relu(self.value_bn1(v)).view(-1, 16*4*4)
         v = self.relu(self.value_fc1(v))
         value = self.tanh(self.value_fc2(v))
 
         # policy head part
         p = self.policy_conv1(s)
-        p = self.relu(self.policy_bn1(p))
+        p = self.relu(self.policy_bn1(p)).view(-1, 16*4*4)
         prob = self.policy_fc1(p)
         return prob, value
 
 class neuralnetwork:
-    def __init__(self, input_layers, use_cuda=True, learning_rate=0.1):
+    def __init__(self, input_layers, board_size, use_cuda=True, learning_rate=0.1):
         self.use_cuda = use_cuda
         if use_cuda:
-            self.model = Model(input_layer=input_layers).cuda()
+            self.model = Model(input_layer=input_layers, board_size=board_size).cuda().double()
         else:
-            self.model = Model(input_layer=input_layers)
+            self.model = Model(input_layer=input_layers, board_size=board_size)
         self.opt = torch.optim.Adam(self.model.parameters(), lr=learning_rate, weight_decay=1e-4)
 
         self.mse = nn.MSELoss()
         self.crossloss = nn.CrossEntropyLoss()
 
 
-    def train(self, state, z, pi):
+    def train(self, data_loader, game_time):
         self.model.train()
-        state = torch.from_numpy(state)
-        if self.use_cuda:
-            state = state.cuda()
-        state = Variable(state)
-        self.opt.zero_grad()
+        for batch_idx, (state, distrib, winner) in enumerate(data_loader):
+            state, distrib, winner = Variable(state).unsqueeze(1).double(), Variable(distrib).double(), Variable(winner).unsqueeze(1).double()
+            if self.use_cuda:
+                state, distrib, winner = state.cuda(), distrib.cuda(), winner.cuda()
+            self.opt.zero_grad()
+            prob, value = self.model(state)
+            # prob = F.log_softmax(prob, dim=1)
+            loss1 = F.kl_div(prob, distrib)
+            loss2 = F.mse_loss(value, winner)
+            loss1.backward(retain_graph=True)
+            loss2.backward()
+            self.opt.step()
+            if batch_idx % 20 == 0:
+                print("We have played {} games, and batch {}, the loss1 is {}, the loss2 is {}".format(game_time, batch_idx, loss1.data, loss2.data))
 
-        prob, v = self.model(state)
-        Loss = self.mse(z, v) + self.crossloss(prob, pi)
-        Loss.backward()
-        self.opt.step()
 
     def eval(self, state):
         self.model.eval()
-        state = torch.from_numpy(state)
-        with torch.zero_grad():
+        if self.use_cuda:
+            state = torch.from_numpy(state).unsqueeze(0).unsqueeze(0).double().cuda()
+        else:
+            state = torch.from_numpy(state).unsqueeze(0).unsqueeze(0).double()
+        with torch.no_grad():
             prob, value = self.model(state)
-        return F.softmax(prob), value
+        return F.softmax(prob, dim=1), value

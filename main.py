@@ -1,30 +1,35 @@
-from MCTS import MCTS
-from five_stone_game import main_process
+from new_MCTS import MCTS
+import time
 import utils
+from network import neuralnetwork as nn
+
+import torch
+import torch.utils.data as torch_data
+import torch.utils as torch_utils
+import numpy as np
 
  #child node的action我似乎是写错了，每一个node的child之内对应的每一个child node之中都应该有一个action
+
+
 def main(board_size=11,tree_file=None):
+    Net = nn(input_layers=1, board_size=11)
+    stack = utils.random_stack()
     if tree_file:
         tree = utils.read_file(tree_file)
     else:
-        tree = MCTS(board_size=board_size)
-    game = main_process(board_size=board_size)
-    while True:
-        game_continue = True
-        next_move = tree.MCTS_step(last_step=None, board=None, game_continue=True)
-        while game_continue:
-                game_continue, board_state = game.step(next_move)
-                next_move=tree.MCTS_step(last_step=next_move, board=board_state, game_continue=game_continue)
-        tree.restart()
-        game.renew()
-        if game.games_counter % 1000 == 0:
-            print("We have played {} games, black wins:{}, white wins:{}, heqi:{}".
-                  format(game.games_counter, game.games_black_win_counter, game.games_white_win_counter,
-                         game.no_win_games_counter))
-            print("And in the last 1000 games, black wins:{}, white wins:{}, heqi:{}".
-                  format(game.tmp_black_win, game.tmp_white_win, game.tmp_heqi))
-            game.clear_tmp()
-            print(" ")
-        if game.games_counter % 5e4 == 0:
-            utils.write_file(tree, 'MCTS_{}.pkl'.format(game.games_counter))
-main(tree_file="MCTS_400000.pkl")
+        tree = MCTS(board_size=board_size, neural_network=Net)
+
+    for game_time in range(100):
+        game_record = tree.game()
+        if len(game_record) % 2 == 1:
+            print("game {} completed, black win, this game length is {}".format(game_time, len(game_record)))
+        else:
+            print("game {} completed, win win, this game length is {}".format(game_time, len(game_record)))
+        utils.write_file(game_record, time.strftime("%Y%m%d%H%M%S", time.localtime()))
+        train_data = utils.generate_training_data(game_record=game_record, board_size=11)
+        for i in range(len(train_data)):
+            stack.push(train_data[i])
+        my_loader = utils.generate_data_loader(stack)
+        Net.train(my_loader, game_time)
+main()
+print("here we are")

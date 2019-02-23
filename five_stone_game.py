@@ -21,15 +21,18 @@ class main_process:
     def which_player(self):
         return self.current_player
 
-    def current_board_state(self):
-        return self.board
+    def current_board_state(self, raw=False):
+        if raw:
+            return self.board
+        else:
+            return self.board[4:self.board_size+4, 4:self.board_size+4]
 
     def simulate_reset(self, board_state):  # 这里还可以添加一个检测输入棋盘是否为一局胜负以分的board的算法，但是由于不影响强化学习，所以暂且搁置
         if type(board_state) != np.ndarray: # 而且还有一部分原因也是因为没有找到一个合适的算法。
             raise ValueError("board_state must be a np array")
-        if board_state.shape[0]!=self.board_size or board_state.shape[1]!=self.board_size:
+        if board_state.shape[0]!=self.board_size+8 or board_state.shape[1]!=self.board_size+8:
             raise ValueError("board size is different from the given size")
-        self.board = board_state
+        self.board = np.array(board_state, copy=True)
         step_count, black_count, white_count = 0, 0, 0
         for hang in board_state:
             for lie in hang:
