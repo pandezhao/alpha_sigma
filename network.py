@@ -144,8 +144,12 @@ class neuralnetwork:
                 state, distrib, winner = state.cuda(), distrib.cuda(), winner.cuda()
             self.opt.zero_grad()
             prob, value = self.model(state)
-            # prob = F.log_softmax(prob, dim=1)
-            loss1 = F.kl_div(prob, distrib)
+            output = F.softmax(prob, dim=1)
+
+            test1 = torch.sum(distrib, dim=1)
+            test2 = torch.sum(prob, dim=1)
+
+            loss1 = F.kl_div(output, distrib)
             loss2 = F.mse_loss(value, winner)
             loss1.backward(retain_graph=True)
             loss2.backward()

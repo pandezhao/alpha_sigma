@@ -155,5 +155,6 @@ class MCTS:
             action, distribution = self.current_node.get_distribution()
             game_continue, state = self.game_process.step(utils.str_to_move(action))
             self.current_node = self.MCTS_step(action)
-            game_record.append({"distribution":distribution, "action":action})
+            game_record.append({"distribution": distribution, "action":action})
+        self.game_process.renew()
         return game_record
