@@ -124,7 +124,7 @@ class Model(nn.Module):
         return prob, value
 
 class neuralnetwork:
-    def __init__(self, input_layers, board_size, use_cuda=True, learning_rate=0.01):
+    def __init__(self, input_layers, board_size, use_cuda=True, learning_rate=0.1):
         self.use_cuda = use_cuda
         if use_cuda:
             self.model = Model(input_layer=input_layers, board_size=board_size).cuda().double()

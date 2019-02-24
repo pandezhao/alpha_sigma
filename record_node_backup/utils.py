@@ -15,7 +15,6 @@ char2num = {"a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i":
 temperature = 1
 Cpuct = 0.1
 batch_size = 20
-board_size = 11
 
 class distribution_calculater:
     def __init__(self, size):
@@ -32,25 +31,15 @@ class distribution_calculater:
 
     def get(self):
         result = []
-        choice_pool = []
-        choice_prob = []
         for key in self.order:
-            if self.map[key] != 0:
-                choice_pool.append(key)
-                tmp = np.float_power(self.map[key], 1 / temperature)
-                choice_prob.append(tmp)
-                result.append(tmp)
-                self.map[key] = 0
-            else:
-                result.append(0)
+            result.append(np.float_power(self.map[key], 1/temperature))
+            self.map[key] = 0
 
         he = sum(result)
         for i in range(len(result)):
             if result[i]:
                 result[i] = result[i] / he
-        choice_prob = [choice/he for choice in choice_prob]
-        move = np.random.choice(choice_pool, p=0.8 * np.array(choice_prob) + 0.2 * np.random.dirichlet(0.3*np.ones(len(choice_prob))))
-        return move, result
+        return self.order[np.argmax(result)], result
 
 def step_child_remove(board_pool, child_pool):
     i = 0
