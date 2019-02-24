@@ -21,20 +21,23 @@ def main(tree_file=None, pretrained_model=None, game_file_saved_dict="game_recor
     else:
         tree = MCTS(board_size=utils.board_size, neural_network=Net)
 
-    for game_time in range(100):
+    game_time = 0
+    while True:
         game_record = tree.game()
         if len(game_record) % 2 == 1:
             print("game {} completed, black win, this game length is {}".format(game_time, len(game_record)))
         else:
             print("game {} completed, white win, this game length is {}".format(game_time, len(game_record)))
-        utils.write_file(game_record, game_file_saved_dict + "/"+time.strftime("%Y%m%d-%H-%M-%S", time.localtime()))
+        utils.write_file(game_record, game_file_saved_dict + "/"+time.strftime("%Y%m%d-%H-%M-%S", time.localtime())+'_game_time:{}.pkl'.format(game_time))
         train_data = utils.generate_training_data(game_record=game_record, board_size=utils.board_size)
         for i in range(len(train_data)):
             stack.push(train_data[i])
         my_loader = utils.generate_data_loader(stack)
         Net.train(my_loader, game_time)
         print("train finished")
-    torch.save(Net, "model_"+time.strftime("%Y%m%d-%H-%M", time.localtime())+".pkl")
+        game_time += 1
+        if game_time % 50 == 0:
+            torch.save(Net, "model_{}.pkl".format(game_time))
 
 main()
 

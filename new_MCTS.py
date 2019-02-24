@@ -53,7 +53,7 @@ class node:
         self.child[action_name] = edge(action=action, parent_node=self, priorP=priorP)
 
     def get_child(self, action):
-        return self.child[action].child_node
+        return self.child[action].get_child()
 
     def eval_or_not(self):
         return len(self.child)==0
@@ -99,8 +99,11 @@ class MCTS:
         self.game_process.renew()
 
     def MCTS_step(self, action):
-        next_node = self.current_node.get_child(action)
-        next_node.parent = None
+        try:
+            next_node = self.current_node.get_child(action)
+            next_node.parent = None
+        except:
+            print("here we are")
         return next_node
 
     def simulation(self):
