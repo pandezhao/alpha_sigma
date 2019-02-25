@@ -53,7 +53,8 @@ class node:
         self.child[action_name] = edge(action=action, parent_node=self, priorP=priorP)
 
     def get_child(self, action):
-        return self.child[action].get_child()
+        child_node, _ = self.child[action].get_child()
+        return child_node
 
     def eval_or_not(self):
         return len(self.child)==0
@@ -63,10 +64,10 @@ class node:
         if self.parent:
             self.parent.backup(v)
 
-    def get_distribution(self): ## used to get the step distribution of current
+    def get_distribution(self, train=True): ## used to get the step distribution of current
         for key in self.child.keys():
             distrib_calculater.push(key, self.child[key].counter)
-        return distrib_calculater.get()
+        return distrib_calculater.get(train=train)
 
 
     def UCB_sim(self):
@@ -99,14 +100,12 @@ class MCTS:
         self.game_process.renew()
 
     def MCTS_step(self, action):
-        try:
-            next_node = self.current_node.get_child(action)
-            next_node.parent = None
-        except:
-            print("here we are")
+        next_node = self.current_node.get_child(action)
+        next_node.parent = None
         return next_node
 
     def simulation(self):
+        eval_counter, step_per_simulate = 0, 0
         for _ in range(self.s_per_step):
             expand, game_continue = False, True
             this_node = self.current_node
@@ -116,37 +115,44 @@ class MCTS:
                 if this_node.eval_or_not():
                     state_prob, _ = self.NN.eval(state)
                     valid_move = utils.valid_move(state)
+                    eval_counter += 1
                     for move in valid_move:
                         this_node.add_child(action=move, priorP=state_prob[0, move[0]*self.board_size + move[1]])
 
                 this_node, expand, action = this_node.UCB_sim()
                 game_continue, state = self.simulate_game.step(action)
+                step_per_simulate += 1
 
             if not game_continue:
                 this_node.backup(1)
             elif expand:
                 _, state_v = self.NN.eval(state)
                 this_node.backup(state_v)
+        return eval_counter / self.s_per_step, step_per_simulate / self.s_per_step
 
-    def game(self):
+    def game(self, train=True):
         game_continue = True
         game_record = []
         begin_time = int(time.time())
         step = 1
+        total_eval = 0
+        total_step = 0
         while game_continue:
             begin_time1 = int(time.time())
-            self.simulation()
-            action, distribution = self.current_node.get_distribution()
+            avg_eval, avg_s_per_step = self.simulation()
+            action, distribution = self.current_node.get_distribution(train=train)
             game_continue, state = self.game_process.step(utils.str_to_move(action))
             self.current_node = self.MCTS_step(action)
             game_record.append({"distribution": distribution, "action":action})
             end_time1 = int(time.time())
-            print("step:{}, we cost {} seconds".format(step, end_time1-begin_time1))
-            print(" ")
+            print("step:{},cost:{}s, total time:{}:{} Avg eval:{}, Aver step:{}".format(step, end_time1-begin_time1, int((end_time1 - begin_time)/60),
+                                                    (end_time1 - begin_time) % 60, avg_eval, avg_s_per_step), end="\r")
+            total_eval += avg_eval
+            total_step += avg_s_per_step
             step += 1
         self.renew()
         end_time = int(time.time())
         min = int((end_time - begin_time)/60)
         second = (end_time - begin_time) % 60
-        print("In last game, we cost {}:{}".format(min, second))
-        return game_record
+        print("In last game, we cost {}:{}".format(min, second), end="\n")
+        return game_record, total_eval/step, total_step/step

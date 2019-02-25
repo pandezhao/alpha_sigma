@@ -2,6 +2,7 @@ import numpy as np
 import pickle
 import torch
 import torch.utils.data as torch_data
+import time
 
 import copy
 import random
@@ -15,7 +16,8 @@ char2num = {"a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7, "i":
 temperature = 1
 Cpuct = 0.1
 batch_size = 20
-board_size = 11
+board_size = 8
+learning_rate = 0.1
 
 class distribution_calculater:
     def __init__(self, size):
@@ -30,7 +32,7 @@ class distribution_calculater:
     def push(self, key, value):
         self.map[key] = value
 
-    def get(self):
+    def get(self, train=True):
         result = []
         choice_pool = []
         choice_prob = []
@@ -49,7 +51,10 @@ class distribution_calculater:
             if result[i]:
                 result[i] = result[i] / he
         choice_prob = [choice/he for choice in choice_prob]
-        move = np.random.choice(choice_pool, p=0.8 * np.array(choice_prob) + 0.2 * np.random.dirichlet(0.3*np.ones(len(choice_prob))))
+        if train:
+            move = np.random.choice(choice_pool, p=0.8 * np.array(choice_prob) + 0.2 * np.random.dirichlet(0.3*np.ones(len(choice_prob))))
+        else:
+            move = choice_pool[np.argmax(choice_prob)]
         return move, result
 
 def step_child_remove(board_pool, child_pool):
@@ -147,3 +152,17 @@ def generate_data_loader(stack):
     dataset = torch_data.TensorDataset(tensor_x, tensor_y1, tensor_y2)
     my_loader = torch_data.DataLoader(dataset, batch_size=batch_size, shuffle=True)
     return my_loader
+
+def visualization(file_name, board_size=11):
+    action_record = []
+    record = read_file(file_name)
+    for i in record:
+        action_record.append(i["action"])
+    board = np.zeros([board_size, board_size])
+    stone = 1
+    for action in action_record:
+       act = str_to_move(action)
+       board[act[0], act[1]] = stone
+       stone = - stone
+       print(board, end="\r")
+       time.sleep(2)

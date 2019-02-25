@@ -14,6 +14,7 @@ def conv1x1(in_planes, out_planes, stride=1):
     """1x1 convolution"""
     return nn.Conv2d(in_planes, out_planes, kernel_size=1, stride=stride, bias=False)
 
+para = {19:6, 18:6, 17:6, 16:5, 15:5, 14:5, 13:5, 12:4, 11:4, 10:4, 9:4, 8:3, 7:3, 6:3, 5:3}
 
 class BasicBlock(nn.Module):
     expansion = 1
@@ -48,16 +49,16 @@ class BasicBlock(nn.Module):
 
 class ResNet(nn.Module):
 
-    def __init__(self, block, layers, input_layer=3):
+    def __init__(self, block, layers, input_layer):
         super(ResNet, self).__init__()
-        self.inplanes = 8
-        self.conv1 = nn.Conv2d(input_layer, 8, kernel_size=3, stride=1, padding=3,
+        self.inplanes = 16
+        self.conv1 = nn.Conv2d(input_layer, 16, kernel_size=3, stride=1, padding=3,
                                bias=False)
-        self.bn1 = nn.BatchNorm2d(8)
+        self.bn1 = nn.BatchNorm2d(16)
         self.relu = nn.ReLU(inplace=True)
-        self.layer1 = self._make_layer(block, 8, layers[0])
-        self.layer2 = self._make_layer(block, 16, layers[1], stride=2)
-        self.layer3 = self._make_layer(block, 32, layers[2], stride=2)
+        self.layer1 = self._make_layer(block, 16, layers[0])
+        self.layer2 = self._make_layer(block, 32, layers[1], stride=2)
+        self.layer3 = self._make_layer(block, 64, layers[2], stride=2)
         # self.layer4 = self._make_layer(block, 512, layers[3], stride=2)
 
     def _make_layer(self, block, planes, blocks, stride=1):
@@ -96,35 +97,36 @@ class Model(nn.Module):
     def __init__(self, input_layer, board_size):
         super(Model, self).__init__()
         self.model = resnet18(input_layers=input_layer)
+        self.p = para[board_size]
         self.tanh = nn.Tanh()
         self.relu = nn.ReLU()
         # value head
-        self.value_conv1 = nn.Conv2d(kernel_size=1, in_channels=32, out_channels=16)
+        self.value_conv1 = nn.Conv2d(kernel_size=1, in_channels=64, out_channels=16)
         self.value_bn1 = nn.BatchNorm2d(16)
-        self.value_fc1 = nn.Linear(in_features=16 * 4 * 4, out_features=256)
+        self.value_fc1 = nn.Linear(in_features=16 * self.p * self.p, out_features=256)
         self.value_fc2 = nn.Linear(in_features=256, out_features=1)
         # policy head
-        self.policy_conv1 = nn.Conv2d(kernel_size=1, in_channels=32, out_channels=16)
+        self.policy_conv1 = nn.Conv2d(kernel_size=1, in_channels=64, out_channels=16)
         self.policy_bn1 = nn.BatchNorm2d(16)
-        self.policy_fc1 = nn.Linear(in_features=16 * 4 * 4, out_features=board_size * board_size)
+        self.policy_fc1 = nn.Linear(in_features=16 * self.p * self.p, out_features=board_size * board_size)
 
     def forward(self, state):
         s = self.model(state)
 
         # value head part
         v = self.value_conv1(s)
-        v = self.relu(self.value_bn1(v)).view(-1, 16*4*4)
+        v = self.relu(self.value_bn1(v)).view(-1, 16*self.p *self.p)
         v = self.relu(self.value_fc1(v))
         value = self.tanh(self.value_fc2(v))
 
         # policy head part
         p = self.policy_conv1(s)
-        p = self.relu(self.policy_bn1(p)).view(-1, 16*4*4)
+        p = self.relu(self.policy_bn1(p)).view(-1, 16*self.p * self.p)
         prob = self.policy_fc1(p)
         return prob, value
 
 class neuralnetwork:
-    def __init__(self, input_layers, board_size, use_cuda=True, learning_rate=0.01):
+    def __init__(self, input_layers, board_size, use_cuda=True, learning_rate=0.1):
         self.use_cuda = use_cuda
         if use_cuda:
             self.model = Model(input_layer=input_layers, board_size=board_size).cuda().double()
@@ -138,6 +140,7 @@ class neuralnetwork:
 
     def train(self, data_loader, game_time):
         self.model.train()
+        loss_record = []
         for batch_idx, (state, distrib, winner) in enumerate(data_loader):
             state, distrib, winner = Variable(state).unsqueeze(1).double(), Variable(distrib).double(), Variable(winner).unsqueeze(1).double()
             if self.use_cuda:
@@ -159,6 +162,8 @@ class neuralnetwork:
             self.opt.step()
             if batch_idx % 20 == 0:
                 print("We have played {} games, and batch {}, the cross entropy loss is {}, the mse loss is {}".format(game_time, batch_idx, cross_entropy.data, mse.data))
+            loss_record.append(cross_entropy.data)
+        return loss_record
 
 
     def eval(self, state):
@@ -170,3 +175,7 @@ class neuralnetwork:
         with torch.no_grad():
             prob, value = self.model(state)
         return F.softmax(prob, dim=1), value
+
+    def adjust_lr(self, lr):
+        for group in self.opt.param_groups:
+            group['lr'] = lr
