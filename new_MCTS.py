@@ -156,3 +156,23 @@ class MCTS:
         second = (end_time - begin_time) % 60
         print("In last game, we cost {}:{}".format(min, second), end="\n")
         return game_record, total_eval/step, total_step/step
+
+    def interact_game_init(self):
+        self.renew()
+        _, _ = self.simulation()
+        action, distribution = self.current_node.get_distribution(train=False)
+        game_continue, state = self.game_process.step(utils.str_to_move(action))
+        self.current_node = self.MCTS_step(action)
+        return state, game_continue
+
+    def interact_game(self, action):
+        game_continue, state = self.game_process.step(action)
+        self.current_node = self.MCTS_step(utils.move_to_str(action))
+        if not game_continue:
+            pass
+        else:
+            _, _ = self.simulation()
+            action, distribution = self.current_node.get_distribution(train=False)
+            game_continue, state = self.game_process.step(utils.str_to_move(action))
+            self.current_node = self.MCTS_step(action)
+        return state, game_continue

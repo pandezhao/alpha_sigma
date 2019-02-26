@@ -39,11 +39,11 @@ def main(tree_file=None, pretrained_model="model_100.pkl", game_file_saved_dict=
         record.extend(Net.train(my_loader, game_time))
         print("train finished")
         print(" ")
-        game_time += 1
         if game_time % 50 == 0:
             torch.save(Net, "model_{}.pkl".format(game_time))
             test_game_record, _, _ = tree.game(train=False)
             utils.write_file(test_game_record, game_file_saved_dict + "/"+'test_{}.pkl'.format(game_time))
+            print("We finished a test game at {} game time".format(game_time))
         plt.figure()
         plt.plot(record)
         plt.title("cross entropy loss")
@@ -51,6 +51,8 @@ def main(tree_file=None, pretrained_model="model_100.pkl", game_file_saved_dict=
         plt.ylabel("Loss")
         plt.savefig("loss record.svg")
         plt.close()
+
+        game_time += 1
 
 main()
 print("here we are")

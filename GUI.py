@@ -1,30 +1,42 @@
 import pygame
 import os
 import utils
+import torch
+from new_MCTS import MCTS
 
 import numpy as np
 
-def main(board_size=8, record_file=None):
-    if record_file:
+def main(board_size=8, record_file=None, oppo=None):
+    if record_file and not oppo:
         file = utils.read_file(record_file)
         file_record = []
         for i in file:
             file_record.append(i["action"])
         step = 0
         record_file_label = True
+    if oppo:
+        try:
+            Net = torch.load(oppo)
+            tree = MCTS(board_size=board_size, neural_network=Net)
+        except:
+            raise ValueError("The parameter oppo must be a pretrained model")
+
     GRID_WIDTH = 36
     WIDTH = (board_size+2) * GRID_WIDTH
     HEIGHT = (board_size+2) * GRID_WIDTH
     FPS = 30
 
-    record = np.zeros([board_size, board_size])
+    if not oppo:
+        record = np.zeros([board_size, board_size])
+    else:
+        record, game_continue = tree.interact_game_init()
 
     # define colors
     WHITE = (255, 255, 255)
     BLACK = (0, 0, 0)
-    RED = (255, 0, 0)
-    GREEN = (0, 255, 0)
-    BLUE = (0, 0, 255)
+    # RED = (255, 0, 0)
+    # GREEN = (0, 255, 0)
+    # BLUE = (0, 0, 255)
 
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -101,13 +113,25 @@ def main(board_size=8, record_file=None):
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if not record_file:
+                if not record_file and not oppo:
                     pos = event.pos
                     if pos[0] < GRID_WIDTH or pos[1]<GRID_WIDTH or pos[0]>WIDTH-GRID_WIDTH or pos[1] > HEIGHT - GRID_WIDTH:
                         pass
                     else:
                         grid = (int((pos[0]-GRID_WIDTH)/GRID_WIDTH), int((pos[1]-GRID_WIDTH)/GRID_WIDTH))
                         record[grid[0], grid[1]] = 1
+                if oppo:
+                    if game_continue:
+                        pos = event.pos
+                        if pos[0] < GRID_WIDTH or pos[1] < GRID_WIDTH or pos[0] > WIDTH - GRID_WIDTH or pos[
+                            1] > HEIGHT - GRID_WIDTH:
+                            pass
+                        else:
+                            grid = (int((pos[0] - GRID_WIDTH) / GRID_WIDTH), int((pos[1] - GRID_WIDTH) / GRID_WIDTH))
+                            record, game_continue = tree.interact_game(grid)
+                    else:
+                        pass
+
                 else:
                     if record_file_label:
                         record_file_label=visual_update(record, file_record, step)
@@ -120,4 +144,4 @@ def main(board_size=8, record_file=None):
         pygame.display.flip()
     pygame.quit()
 
-main(record_file="game_record/20190225.pkl")
+main(oppo="model_200.pkl")
