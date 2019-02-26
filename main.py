@@ -9,21 +9,20 @@ import torch
  #child node的action我似乎是写错了，每一个node的child之内对应的每一个child node之中都应该有一个action
 
 
-def main(tree_file=None, pretrained_model="model_100.pkl", game_file_saved_dict="game_record"):
+def main(tree_file=None, pretrained_model=None, game_file_saved_dict="game_record"):
     if not os.path.exists(game_file_saved_dict):
         os.mkdir(game_file_saved_dict)
     if pretrained_model:
         Net = torch.load(pretrained_model)
     else:
-        Net = nn(input_layers=1, board_size=utils.board_size, learning_rate=utils.learning_rate)
-    Net.adjust_lr(0.01)
+        Net = nn(input_layers=3, board_size=utils.board_size, learning_rate=utils.learning_rate)
     stack = utils.random_stack()
     if tree_file:
         tree = utils.read_file(tree_file)
     else:
         tree = MCTS(board_size=utils.board_size, neural_network=Net)
     record = []
-    game_time = 100
+    game_time = 0
     while True:
         game_record, eval, steps = tree.game()
         if len(game_record) % 2 == 1:
@@ -31,7 +30,7 @@ def main(tree_file=None, pretrained_model="model_100.pkl", game_file_saved_dict=
         else:
             print("game {} completed, white win, this game length is {}".format(game_time, len(game_record)))
         print("The average eval:{}, the average steps:{}".format(eval, steps))
-        utils.write_file(game_record, game_file_saved_dict + "/"+time.strftime("%Y%m%d-%H-%M-%S", time.localtime())+'_game_time:{}.pkl'.format(game_time))
+        utils.write_file(game_record, game_file_saved_dict + "/"+time.strftime("%Y%m%d_%H_%M_%S", time.localtime())+'_game_time:{}.pkl'.format(game_time))
         train_data = utils.generate_training_data(game_record=game_record, board_size=utils.board_size)
         for i in range(len(train_data)):
             stack.push(train_data[i])
@@ -44,6 +43,8 @@ def main(tree_file=None, pretrained_model="model_100.pkl", game_file_saved_dict=
             test_game_record, _, _ = tree.game(train=False)
             utils.write_file(test_game_record, game_file_saved_dict + "/"+'test_{}.pkl'.format(game_time))
             print("We finished a test game at {} game time".format(game_time))
+        if game_time == 200:
+            Net.adjust_lr(0.01)
         plt.figure()
         plt.plot(record)
         plt.title("cross entropy loss")

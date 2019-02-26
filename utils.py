@@ -138,8 +138,9 @@ def generate_training_data(game_record, board_size):
     winner = -1 if len(game_record) % 2 == 0 else 1
     for i in range(len(game_record)):
         step = str_to_move(game_record[i]['action'])
+        state = transfer_to_input(board, player, board_size)
+        data.append({"state": state, "distribution": game_record[i]['distribution'], "value": winner})
         board[step[0], step[1]] = player
-        data.append({"state": np.array(board, copy=True), "distribution": game_record[i]['distribution'], "value": winner})
         player, winner = -player, -winner
     return data
 
@@ -152,6 +153,17 @@ def generate_data_loader(stack):
     dataset = torch_data.TensorDataset(tensor_x, tensor_y1, tensor_y2)
     my_loader = torch_data.DataLoader(dataset, batch_size=batch_size, shuffle=True)
     return my_loader
+
+def transfer_to_input(state, current_player, board_size):
+    if current_player==1:
+        tmp3 = np.ones([board_size, board_size]).astype(float)
+        tmp2 = np.array(state > 0).astype(float)
+        tmp1 = np.array(state < 0).astype(float)
+    else:
+        tmp3 = np.zeros([board_size, board_size])
+        tmp2 = np.array(state < 0).astype(float)
+        tmp1 = np.array(state > 0).astype(float)
+    return np.stack([tmp1, tmp2, tmp3])
 
 def visualization(file_name, board_size=11):
     action_record = []

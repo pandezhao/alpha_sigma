@@ -142,7 +142,7 @@ class neuralnetwork:
         self.model.train()
         loss_record = []
         for batch_idx, (state, distrib, winner) in enumerate(data_loader):
-            state, distrib, winner = Variable(state).unsqueeze(1).double(), Variable(distrib).double(), Variable(winner).unsqueeze(1).double()
+            state, distrib, winner = Variable(state).double(), Variable(distrib).double(), Variable(winner).unsqueeze(1).double()
             if self.use_cuda:
                 state, distrib, winner = state.cuda(), distrib.cuda(), winner.cuda()
             self.opt.zero_grad()
@@ -169,9 +169,9 @@ class neuralnetwork:
     def eval(self, state):
         self.model.eval()
         if self.use_cuda:
-            state = torch.from_numpy(state).unsqueeze(0).unsqueeze(0).double().cuda()
+            state = torch.from_numpy(state).unsqueeze(0).double().cuda()
         else:
-            state = torch.from_numpy(state).unsqueeze(0).unsqueeze(0).double()
+            state = torch.from_numpy(state).unsqueeze(0).double()
         with torch.no_grad():
             prob, value = self.model(state)
         return F.softmax(prob, dim=1), value

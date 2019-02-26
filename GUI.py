@@ -144,4 +144,4 @@ def main(board_size=8, record_file=None, oppo=None):
         pygame.display.flip()
     pygame.quit()
 
-main(oppo="model_200.pkl")
+main(record_file="test_0.pkl")

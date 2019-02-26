@@ -2,11 +2,295 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e778044-0e4d-4dd5-acbf-fe4f92cd2a4d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190224-23-04-47_game_time:0.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190224-23-15-13_game_time:1.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190224-23-26-05_game_time:2.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190224-23-32-36_game_time:3.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190224-23-46-00_game_time:4.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190224-23-54-13_game_time:5.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-00-01-18_game_time:6.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-00-10-37_game_time:7.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-00-17-14_game_time:8.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-00-24-04_game_time:9.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-00-35-21_game_time:10.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-00-48-00_game_time:11.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-00-58-48_game_time:12.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-01-06-49_game_time:13.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-01-13-31_game_time:14.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-01-20-45_game_time:15.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-01-26-24_game_time:16.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-01-33-40_game_time:17.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-01-45-14_game_time:18.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-01-56-16_game_time:19.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-02-02-23_game_time:20.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-02-12-44_game_time:21.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-02-22-39_game_time:22.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-02-34-43_game_time:23.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-02-48-19_game_time:24.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-02-59-36_game_time:25.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-03-12-35_game_time:26.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-03-32-14_game_time:27.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-03-41-02_game_time:28.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-03-46-08_game_time:29.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-03-51-24_game_time:30.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-00-33_game_time:31.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-08-04_game_time:32.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-14-14_game_time:33.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-16-55_game_time:34.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-19-29_game_time:35.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-21-55_game_time:36.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-23-34_game_time:37.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-26-27_game_time:38.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-29-30_game_time:39.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-31-46_game_time:40.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-40-37_game_time:41.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-04-46-15_game_time:42.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-05-00-02_game_time:43.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-05-06-42_game_time:44.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-05-13-29_game_time:45.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-05-23-34_game_time:46.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-05-31-33_game_time:47.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-05-43-51_game_time:48.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-05-54-22_game_time:49.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-06-01-36_game_time:50.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-06-15-06_game_time:51.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-06-20-55_game_time:52.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-06-32-58_game_time:53.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-06-43-11_game_time:54.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-06-57-06_game_time:55.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-07-06-10_game_time:56.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-07-15-46_game_time:57.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-07-21-12_game_time:58.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-07-32-30_game_time:59.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-07-36-10_game_time:60.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-07-45-44_game_time:61.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-07-55-00_game_time:62.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-08-08-25_game_time:63.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-08-19-48_game_time:64.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-08-25-22_game_time:65.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-08-33-59_game_time:66.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-08-43-58_game_time:67.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-08-51-06_game_time:68.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-08-56-43_game_time:69.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-09-06-46_game_time:70.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-09-20-43_game_time:71.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-09-28-04_game_time:72.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-09-34-57_game_time:73.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-09-37-41_game_time:74.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-09-47-48_game_time:75.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-09-55-25_game_time:76.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-10-01-28_game_time:77.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-10-04-59_game_time:78.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-10-13-30_game_time:79.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-10-18-05_game_time:80.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-10-28-11_game_time:81.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-10-34-46_game_time:82.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-10-42-10_game_time:83.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-10-46-32_game_time:84.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-10-54-14_game_time:85.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-11-05-45_game_time:86.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-11-16-03_game_time:87.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-11-24-28_game_time:88.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-11-32-50_game_time:89.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-11-40-40_game_time:90.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-11-48-29_game_time:91.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-11-53-43_game_time:92.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-01-04_game_time:93.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-04-15_game_time:94.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-06-35_game_time:95.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-09-29_game_time:96.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-12-19_game_time:97.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-14-50_game_time:98.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-19-47_game_time:100.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-22-35_game_time:101.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-24-10_game_time:102.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-26-30_game_time:103.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-28-58_game_time:104.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-32-19_game_time:105.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-35-25_game_time:106.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-37-24_game_time:107.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-44-00_game_time:108.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-46-53_game_time:109.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-49-08_game_time:110.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-52-05_game_time:111.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-54-37_game_time:112.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-56-07_game_time:113.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-12-59-35_game_time:114.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-02-13_game_time:115.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-05-14_game_time:116.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-07-53_game_time:117.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-10-25_game_time:118.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-12-53_game_time:119.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-16-42_game_time:120.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-18-20_game_time:121.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-22-14_game_time:122.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-25-04_game_time:123.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-27-12_game_time:124.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-28-31_game_time:125.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-29-56_game_time:126.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-31-50_game_time:127.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-35-06_game_time:128.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-38-20_game_time:129.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-40-04_game_time:130.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-48-33_game_time:131.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-13-54-55_game_time:100.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-06-53_game_time:100.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-12-20_game_time:100.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-14-16_game_time:101.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-16-21_game_time:102.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-18-10_game_time:103.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-20-54_game_time:104.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-24-38_game_time:105.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-26-25_game_time:106.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-28-25_game_time:107.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-31-21_game_time:108.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-34-06_game_time:109.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-36-32_game_time:110.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-39-37_game_time:111.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-42-56_game_time:112.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-45-34_game_time:113.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-46-52_game_time:114.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-48-55_game_time:115.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-51-33_game_time:116.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-53-37_game_time:117.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-56-03_game_time:118.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-14-58-19_game_time:119.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-00-09_game_time:120.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-03-04_game_time:121.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-07-46_game_time:100.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-10-39_game_time:101.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-15-13_game_time:100.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-19-41_game_time:101.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-21-37_game_time:102.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-23-39_game_time:103.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-26-44_game_time:104.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-28-26_game_time:105.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-30-26_game_time:106.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-32-35_game_time:107.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-35-17_game_time:108.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-37-25_game_time:109.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-40-20_game_time:110.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-42-15_game_time:111.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-43-48_game_time:112.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-45-48_game_time:113.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-47-40_game_time:114.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-49-26_game_time:115.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-52-02_game_time:116.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-54-35_game_time:117.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-56-41_game_time:118.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-15-58-06_game_time:119.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-00-57_game_time:120.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-03-03_game_time:121.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-05-57_game_time:122.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-08-39_game_time:123.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-11-16_game_time:124.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-14-43_game_time:125.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-17-11_game_time:126.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-19-27_game_time:127.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-21-31_game_time:128.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-23-38_game_time:129.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-25-36_game_time:130.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-28-17_game_time:131.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-30-53_game_time:132.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-32-15_game_time:133.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-34-58_game_time:134.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-37-50_game_time:135.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-40-35_game_time:136.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-43-18_game_time:137.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-45-11_game_time:138.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-47-44_game_time:139.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-50-09_game_time:140.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-52-58_game_time:141.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-56-15_game_time:142.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-16-59-12_game_time:143.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-02-30_game_time:144.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-05-44_game_time:145.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-08-21_game_time:146.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-11-52_game_time:147.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-14-43_game_time:148.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-17-09_game_time:149.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-19-08_game_time:150.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-23-32_game_time:151.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-26-30_game_time:152.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-29-54_game_time:153.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-32-28_game_time:154.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-34-52_game_time:155.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-36-48_game_time:156.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-39-17_game_time:157.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-41-30_game_time:158.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-44-19_game_time:159.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-47-36_game_time:160.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-49-36_game_time:161.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-54-44_game_time:162.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-56-47_game_time:163.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-17-59-37_game_time:164.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-01-59_game_time:165.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-03-17_game_time:166.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-05-01_game_time:167.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-07-41_game_time:168.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-09-44_game_time:169.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-12-29_game_time:170.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-15-16_game_time:171.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-18-05_game_time:172.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-21-07_game_time:173.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-24-09_game_time:174.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-26-12_game_time:175.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-29-17_game_time:176.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-31-29_game_time:177.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-34-37_game_time:178.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-37-42_game_time:179.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-41-25_game_time:180.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-43-43_game_time:181.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-46-08_game_time:182.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-48-00_game_time:183.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-51-06_game_time:184.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-54-18_game_time:185.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-56-46_game_time:186.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-18-58-59_game_time:187.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-00-46_game_time:188.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-03-37_game_time:189.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-05-23_game_time:190.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-08-28_game_time:191.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-10-19_game_time:192.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-12-49_game_time:193.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-15-34_game_time:194.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-18-31_game_time:195.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-20-12_game_time:196.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-21-49_game_time:197.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-24-19_game_time:198.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-27-07_game_time:199.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-29-13_game_time:200.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-33-46_game_time:201.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-35-19_game_time:202.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-37-29_game_time:203.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-44-47_game_time:204.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-49-41_game_time:205.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-51-51_game_time:206.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-54-24_game_time:207.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-55-54_game_time:208.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-19-59-01_game_time:209.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-20-01-40_game_time:210.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-20-03-35_game_time:211.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-20-06-40_game_time:212.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-20-08-47_game_time:213.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-20-10-28_game_time:214.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225-20-13-31_game_time:215.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/20190225.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/test_100.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/test_150.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game_record/test_200.pkl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/loss record.svg" beforeDir="false" afterPath="$PROJECT_DIR$/loss record.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model_100.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model_100.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_100.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_150.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_200.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model_50.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new_MCTS.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_MCTS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_100.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +300,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/alpha_sigma$main.coverage" NAME="main Coverage Results" MODIFIED="1551121664217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/alpha_sigma$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1551142745764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/alpha_sigma$main.coverage" NAME="main Coverage Results" MODIFIED="1551148759242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/alpha_sigma$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1551150761689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/alpha_sigma$utils.coverage" NAME="utils Coverage Results" MODIFIED="1550948941966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DockManager">
@@ -25,11 +309,11 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/main.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="918">
-                    <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+                  <state relative-caret-position="640">
+                    <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
                     <folding>
                       <element signature="e#0#25#0" expanded="true" />
                     </folding>
@@ -37,13 +321,25 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="new_MCTS.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/new_MCTS.py">
+            <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/utils.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="623">
-                    <caret line="168" selection-start-line="168" selection-end-line="168" />
+                  <state relative-caret-position="552">
+                    <caret line="166" selection-start-line="166" selection-end-line="166" />
                     <folding>
                       <element signature="e#0#18#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="five_stone_game.py" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/five_stone_game.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="-468">
+                    <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+                    <folding>
+                      <element signature="e#0#12#0" expanded="true" />
                     </folding>
                   </state>
                 </provider>
@@ -59,8 +355,8 @@
       <file leaf-file-name="GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-140">
-              <caret line="111" selection-start-line="111" selection-end-line="111" />
+            <state relative-caret-position="724">
+              <caret line="146" column="30" lean-forward="true" selection-start-line="146" selection-start-column="30" selection-end-line="146" selection-end-column="30" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -68,11 +364,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils.py">
+      <file leaf-file-name="new_MCTS.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/new_MCTS.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
+            <state relative-caret-position="-781">
+              <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -83,8 +379,8 @@
       <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="769">
-              <caret line="180" column="28" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="28" />
+            <state relative-caret-position="-139">
+              <caret line="148" selection-start-line="148" selection-end-line="148" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -111,6 +407,7 @@
       <find>3</find>
       <find>record</find>
       <find>MCTS</find>
+      <find>self.NN</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -119,13 +416,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/five_stone_game.py" />
         <option value="$PROJECT_DIR$/example.py" />
+        <option value="$PROJECT_DIR$/five_stone_game.py" />
         <option value="$PROJECT_DIR$/network.py" />
         <option value="$PROJECT_DIR$/utils.py" />
+        <option value="$PROJECT_DIR$/new_MCTS.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/GUI.py" />
-        <option value="$PROJECT_DIR$/new_MCTS.py" />
       </list>
     </option>
   </component>
@@ -138,11 +435,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="84" />
-    <option name="y" value="-4" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="107" />
+    <option name="y" value="107" />
     <option name="width" value="1613" />
-    <option name="height" value="1046" />
+    <option name="height" value="1018" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -282,7 +579,7 @@
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32950923" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.36944744" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.23726977" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -329,8 +626,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>57</line>
+          <line>58</line>
           <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/network.py</url>
+          <line>144</line>
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/network.py</url>
+          <line>148</line>
+          <option name="timeStamp" value="144" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -340,7 +647,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="134" />
+      <option name="time" value="146" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -476,19 +783,9 @@
     <entry file="file://$PROJECT_DIR$/MCTS.py" />
     <entry file="file://$PROJECT_DIR$/MCTS_new.py" />
     <entry file="file://$PROJECT_DIR$/new_one.py" />
-    <entry file="file://$PROJECT_DIR$/five_stone_game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1158">
+        <state relative-caret-position="858">
           <caret line="315" column="78" selection-start-line="315" selection-start-column="78" selection-end-line="315" selection-end-column="78" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
@@ -496,10 +793,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/network.py">
+    <entry file="file://$PROJECT_DIR$/five_stone_game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="769">
-          <caret line="180" column="28" selection-start-line="180" selection-start-column="28" selection-end-line="180" selection-end-column="28" />
+        <state relative-caret-position="-468">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -508,8 +805,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
+        <state relative-caret-position="552">
+          <caret line="166" selection-start-line="166" selection-end-line="166" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-139">
+          <caret line="148" selection-start-line="148" selection-end-line="148" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/new_MCTS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-781">
+          <caret line="109" column="47" selection-start-line="109" selection-start-column="47" selection-end-line="109" selection-end-column="47" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -518,8 +835,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+        <state relative-caret-position="640">
+          <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
@@ -528,20 +845,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-140">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
+        <state relative-caret-position="724">
+          <caret line="146" column="30" lean-forward="true" selection-start-line="146" selection-start-column="30" selection-end-line="146" selection-end-column="30" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/new_MCTS.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="168" selection-start-line="168" selection-end-line="168" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

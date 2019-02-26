@@ -113,7 +113,7 @@ class MCTS:
             state = self.simulate_game.current_board_state()
             while game_continue and not expand:
                 if this_node.eval_or_not():
-                    state_prob, _ = self.NN.eval(state)
+                    state_prob, _ = self.NN.eval(utils.transfer_to_input(state, self.simulate_game.which_player(), self.board_size))
                     valid_move = utils.valid_move(state)
                     eval_counter += 1
                     for move in valid_move:
@@ -126,7 +126,7 @@ class MCTS:
             if not game_continue:
                 this_node.backup(1)
             elif expand:
-                _, state_v = self.NN.eval(state)
+                _, state_v = self.NN.eval(utils.transfer_to_input(state, self.simulate_game.which_player(), self.board_size))
                 this_node.backup(state_v)
         return eval_counter / self.s_per_step, step_per_simulate / self.s_per_step
 
