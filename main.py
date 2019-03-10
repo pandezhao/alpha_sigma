@@ -9,7 +9,7 @@ import torch
  #child node的action我似乎是写错了，每一个node的child之内对应的每一个child node之中都应该有一个action
 
 
-def main(tree_file=None, pretrained_model=None, game_file_saved_dict="game_record"):
+def main(tree_file=None, pretrained_model="model_3000.pkl", game_file_saved_dict="game_record_2"):
     if not os.path.exists(game_file_saved_dict):
         os.mkdir(game_file_saved_dict)
     if pretrained_model:
@@ -21,8 +21,9 @@ def main(tree_file=None, pretrained_model=None, game_file_saved_dict="game_recor
         tree = utils.read_file(tree_file)
     else:
         tree = MCTS(board_size=utils.board_size, neural_network=Net)
+    Net.adjust_lr(1e-2)
     record = []
-    game_time = 0
+    game_time = 3001
     while True:
         game_record, eval, steps = tree.game()
         if len(game_record) % 2 == 1:
@@ -35,23 +36,24 @@ def main(tree_file=None, pretrained_model=None, game_file_saved_dict="game_recor
         for i in range(len(train_data)):
             stack.push(train_data[i])
         my_loader = utils.generate_data_loader(stack)
-        record.extend(Net.train(my_loader, game_time))
+        if game_time % 100 == 0:
+            for _ in range(5):
+                record.extend(Net.train(my_loader, game_time))
         print("train finished")
         print(" ")
-        if game_time % 50 == 0:
+        if game_time % 200 == 0:
             torch.save(Net, "model_{}.pkl".format(game_time))
             test_game_record, _, _ = tree.game(train=False)
             utils.write_file(test_game_record, game_file_saved_dict + "/"+'test_{}.pkl'.format(game_time))
             print("We finished a test game at {} game time".format(game_time))
-        if game_time == 200:
-            Net.adjust_lr(0.01)
-        plt.figure()
-        plt.plot(record)
-        plt.title("cross entropy loss")
-        plt.xlabel("step passed")
-        plt.ylabel("Loss")
-        plt.savefig("loss record.svg")
-        plt.close()
+        if game_time % 200 == 0:
+            plt.figure()
+            plt.plot(record)
+            plt.title("cross entropy loss")
+            plt.xlabel("step passed")
+            plt.ylabel("Loss")
+            plt.savefig("loss record_{}.svg".format(game_time))
+            plt.close()
 
         game_time += 1
 

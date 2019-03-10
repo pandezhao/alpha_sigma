@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
+import numpy as np
 
 
 def conv3x3(in_planes, out_planes, stride=1):
@@ -93,20 +94,41 @@ def resnet18(input_layers):
     return model
 
 
+class Easy_model(nn.Module):
+    def __init__(self, input_layer):
+        super(Easy_model, self).__init__()
+        self.conv1 = nn.Conv2d(input_layer, 32, 3, padding=1)
+        self.conv2 = nn.Conv2d(32, 64, 3)
+        self.conv3 = nn.Conv2d(64, 128, 3)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.bn3 = nn.BatchNorm2d(128)
+        self.relu = nn.ReLU()
+    def forward(self, input):
+        input = self.relu(self.bn1(self.conv1(input)))
+        input = self.relu(self.bn2(self.conv2(input)))
+        input = self.relu(self.bn3(self.conv3(input)))
+
+        return input
+
+
 class Model(nn.Module):
     def __init__(self, input_layer, board_size):
         super(Model, self).__init__()
-        self.model = resnet18(input_layers=input_layer)
-        self.p = para[board_size]
+        # self.model = resnet18(input_layers=input_layer)
+        # self.p = para[board_size]
+        self.model = Easy_model(input_layer)
+        self.p = 4
+        self.output_channel = 128
         self.tanh = nn.Tanh()
         self.relu = nn.ReLU()
         # value head
-        self.value_conv1 = nn.Conv2d(kernel_size=1, in_channels=64, out_channels=16)
+        self.value_conv1 = nn.Conv2d(kernel_size=1, in_channels=self.output_channel, out_channels=16)
         self.value_bn1 = nn.BatchNorm2d(16)
         self.value_fc1 = nn.Linear(in_features=16 * self.p * self.p, out_features=256)
         self.value_fc2 = nn.Linear(in_features=256, out_features=1)
         # policy head
-        self.policy_conv1 = nn.Conv2d(kernel_size=1, in_channels=64, out_channels=16)
+        self.policy_conv1 = nn.Conv2d(kernel_size=1, in_channels=self.output_channel, out_channels=16)
         self.policy_bn1 = nn.BatchNorm2d(16)
         self.policy_fc1 = nn.Linear(in_features=16 * self.p * self.p, out_features=board_size * board_size)
 
@@ -132,7 +154,7 @@ class neuralnetwork:
             self.model = Model(input_layer=input_layers, board_size=board_size).cuda().double()
         else:
             self.model = Model(input_layer=input_layers, board_size=board_size)
-        self.opt = torch.optim.Adam(self.model.parameters(), lr=learning_rate, weight_decay=1e-4)
+        self.opt = torch.optim.SGD(self.model.parameters(), momentum=0.9, lr=learning_rate, weight_decay=1e-4)
 
         self.mse = nn.MSELoss()
         self.crossloss = nn.CrossEntropyLoss()
@@ -142,6 +164,7 @@ class neuralnetwork:
         self.model.train()
         loss_record = []
         for batch_idx, (state, distrib, winner) in enumerate(data_loader):
+            tmp = []
             state, distrib, winner = Variable(state).double(), Variable(distrib).double(), Variable(winner).unsqueeze(1).double()
             if self.use_cuda:
                 state, distrib, winner = state.cuda(), distrib.cuda(), winner.cuda()
@@ -160,9 +183,10 @@ class neuralnetwork:
             loss.backward()
 
             self.opt.step()
-            if batch_idx % 20 == 0:
+            tmp.append(cross_entropy.data)
+            if batch_idx % 10 == 0:
                 print("We have played {} games, and batch {}, the cross entropy loss is {}, the mse loss is {}".format(game_time, batch_idx, cross_entropy.data, mse.data))
-            loss_record.append(cross_entropy.data)
+                loss_record.append(sum(tmp)/len(tmp))
         return loss_record
 
 
