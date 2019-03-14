@@ -147,9 +147,9 @@ def generate_training_data(game_record, board_size):
 
 def generate_data_loader(stack):
     state, distrib, winner = stack.seq()
-    tensor_x = torch.stack([torch.Tensor(s) for s in state])
-    tensor_y1 = torch.stack([torch.Tensor(y1) for y1 in distrib])
-    tensor_y2 = torch.stack([torch.Tensor(np.array(y2)) for y2 in winner])
+    tensor_x = torch.stack(tuple([torch.from_numpy(s) for s in state]))
+    tensor_y1 = torch.stack(tuple([torch.Tensor(y1) for y1 in distrib]))
+    tensor_y2 = torch.stack(tuple([torch.Tensor([float(y2)]) for y2 in winner]))
     dataset = torch_data.TensorDataset(tensor_x, tensor_y1, tensor_y2)
     my_loader = torch_data.DataLoader(dataset, batch_size=batch_size, shuffle=True)
     return my_loader

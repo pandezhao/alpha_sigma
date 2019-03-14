@@ -8,8 +8,7 @@ import matplotlib.pyplot as plt
 import torch
  #child node的action我似乎是写错了，每一个node的child之内对应的每一个child node之中都应该有一个action
 
-
-def main(tree_file=None, pretrained_model="model_3000.pkl", game_file_saved_dict="game_record_2"):
+def main(tree_file=None, pretrained_model=None, game_file_saved_dict="game_record_2"):
     if not os.path.exists(game_file_saved_dict):
         os.mkdir(game_file_saved_dict)
     if pretrained_model:
@@ -21,9 +20,9 @@ def main(tree_file=None, pretrained_model="model_3000.pkl", game_file_saved_dict
         tree = utils.read_file(tree_file)
     else:
         tree = MCTS(board_size=utils.board_size, neural_network=Net)
-    Net.adjust_lr(1e-2)
+    Net.adjust_lr(1e-3)
     record = []
-    game_time = 3001
+    game_time = 3600
     while True:
         game_record, eval, steps = tree.game()
         if len(game_record) % 2 == 1:
@@ -36,6 +35,7 @@ def main(tree_file=None, pretrained_model="model_3000.pkl", game_file_saved_dict
         for i in range(len(train_data)):
             stack.push(train_data[i])
         my_loader = utils.generate_data_loader(stack)
+        utils.write_file(my_loader, "debug_loader.pkl")
         if game_time % 100 == 0:
             for _ in range(5):
                 record.extend(Net.train(my_loader, game_time))
