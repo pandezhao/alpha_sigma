@@ -9,7 +9,7 @@ GUI.py 用于交互的可视化界面
     
       游戏模式： 从终端调用命令： python GUI.py --mode game --game_model model_5400.pkl  其中model_5400.pkl是已经训练好的神经网络，通过--mode指定模式为游戏模式，并通过--game_model装载已经训练好的模型。我们这里提供了一个模型文件：model_5400.pkl
       
-      展示模式： 展示神经网络训练过程中机器自我对弈的结果。从终端调用命令： python GUI.py --mode display --display_file test_4800.pkl 我们这里提供了游戏记录。
+      展示模式： 展示神经网络训练过程中机器自我对弈的结果。从终端调用命令： python GUI.py --mode display --display_file test_5200.pkl 我们这里提供了游戏记录。
     
 
 new_MCTS.py 蒙特卡罗树程序
