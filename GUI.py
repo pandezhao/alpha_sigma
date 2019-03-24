@@ -3,10 +3,25 @@ import os
 import utils
 import torch
 from new_MCTS import MCTS
+import argparse
 
 import numpy as np
 
-def main(board_size=8, record_file=None, oppo=None):
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", default="display", type=str, help="decide which mode too choose, we can choose:display, game")
+    parser.add_argument("--display_file", type=str, help="if we choose display mode, we must select a file to display")
+    parser.add_argument("--game_model", type=str, help="if we choose game mode, we must select a trained model to use")
+    args = parser.parse_args()
+    if args.mode == "display":
+        record_file = args.display_file
+        oppo = None
+    elif args.mode == "game":
+        oppo = args.game_model
+        record_file = None
+    else:
+        raise KeyError("we must select a mode between 'display' and 'game'.")
+    board_size = 8
     if record_file and not oppo:
         file = utils.read_file(record_file)
         file_record = []
@@ -128,7 +143,11 @@ def main(board_size=8, record_file=None, oppo=None):
                             pass
                         else:
                             grid = (int((pos[0] - GRID_WIDTH) / GRID_WIDTH), int((pos[1] - GRID_WIDTH) / GRID_WIDTH))
-                            record, game_continue = tree.interact_game(grid)
+                            record, game_continue = tree.interact_game1(grid)
+                            draw_background(screen)
+                            draw_stone(screen)
+                            pygame.display.flip()
+                            record, game_continue = tree.interact_game2(grid, game_continue, record)
                     else:
                         pass
 
@@ -144,4 +163,5 @@ def main(board_size=8, record_file=None, oppo=None):
         pygame.display.flip()
     pygame.quit()
 
-main(record_file="test_3400.pkl")
+if __name__ == "__main__":
+    main()

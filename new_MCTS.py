@@ -20,7 +20,7 @@ class edge:
 
         self.action_value = 0.0
 
-    def backup(self, v):
+    def backup(self, v):  # back propagation
         self.action_value += v
         self.counter += 1
         self.parent_node.backup(-v)
@@ -34,7 +34,7 @@ class edge:
             self.counter += 1
             return self.child_node, False
 
-    def UCB_value(self):
+    def UCB_value(self):  # 计算当前的UCB value
         if self.action_value:
             Q = self.action_value / self.counter
         else:
@@ -48,7 +48,7 @@ class node:
         self.child = {}
         self.node_player = player
 
-    def add_child(self, action, priorP):
+    def add_child(self, action, priorP):  # 增加node治下的一个edge，但是没有实际创建新的node
         action_name = utils.move_to_str(action)
         self.child[action_name] = edge(action=action, parent_node=self, priorP=priorP)
 
@@ -59,7 +59,7 @@ class node:
     def eval_or_not(self):
         return len(self.child)==0
 
-    def backup(self, v):
+    def backup(self, v):  # back propagation
         self.counter += 1
         if self.parent:
             self.parent.backup(v)
@@ -70,7 +70,7 @@ class node:
         return distrib_calculater.get(train=train)
 
 
-    def UCB_sim(self):
+    def UCB_sim(self):  # 用于根据UCB公式选取node
         UCB_max = -sys.maxsize
         UCB_max_key = None
         for key in self.child.keys():
@@ -82,16 +82,15 @@ class node:
 
 
 class MCTS:
-    def __init__(self, board_size=11, simulation_per_step=800, neural_network=None):
-
+    def __init__(self, board_size=11, simulation_per_step=400, neural_network=None):
         self.board_size = board_size
         self.s_per_step = simulation_per_step
         # self.database = {0: {"":node(init_node, 1, self)}}  # here we haven't complete a whole database that can be
         # self.current_node = self.database[0][""]                   # used to search the exist node
         self.current_node = node(None, 1)
         self.NN = neural_network
-        self.game_process = five_stone_game(board_size=board_size)
-        self.simulate_game = five_stone_game(board_size=board_size)
+        self.game_process = five_stone_game(board_size=board_size)  # 这里附加主游戏进程
+        self.simulate_game = five_stone_game(board_size=board_size)  # 这里附加用于模拟的游戏进程
 
         self.distribution_calculater = utils.distribution_calculater(self.board_size)
 
@@ -104,7 +103,7 @@ class MCTS:
         next_node.parent = None
         return next_node
 
-    def simulation(self):
+    def simulation(self):  # simulation的程序
         eval_counter, step_per_simulate = 0, 0
         for _ in range(self.s_per_step):
             expand, game_continue = False, True
@@ -130,7 +129,7 @@ class MCTS:
                 this_node.backup(state_v)
         return eval_counter / self.s_per_step, step_per_simulate / self.s_per_step
 
-    def game(self, train=True):
+    def game(self, train=True):  # 主程序
         game_continue = True
         game_record = []
         begin_time = int(time.time())
@@ -165,8 +164,11 @@ class MCTS:
         self.current_node = self.MCTS_step(action)
         return state, game_continue
 
-    def interact_game(self, action):
+    def interact_game1(self, action):
         game_continue, state = self.game_process.step(action)
+        return state, game_continue
+
+    def interact_game2(self, action, game_continue, state):
         self.current_node = self.MCTS_step(utils.move_to_str(action))
         if not game_continue:
             pass
