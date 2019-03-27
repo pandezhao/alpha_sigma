@@ -20,3 +20,4 @@ five_stone_game.py 五子棋游戏程序
 
 utils.py 用来装闲杂文件
 
+现在该套程序首发在知乎，知乎链接：https://zhuanlan.zhihu.com/p/59567014 欢迎大家去帮我点赞
